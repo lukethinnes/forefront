@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Movies from './components/movies';
+import Counters from './components/counters';
 
 function App() {
   return (
     <main className="container">
-      <Movies />
+      <Counters />
     </main>
   );
 }
