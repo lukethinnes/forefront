@@ -11,6 +11,14 @@ export default class Counters extends Component {
     ],
   };
 
+  handleIncrement = counter => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = {...counter};
+    counters[index].value++;
+    this.setState({counters});
+  };
+
   handleDelete = counterId => {
     const counters = this.state.counters.filter(c => c.id !== counterId);
     this.setState({counters});
@@ -33,6 +41,7 @@ export default class Counters extends Component {
             counter={counter}
             id={counter.id}
             onDelete={this.handleDelete}
+            onIncrement={this.handleIncrement}
           />
         ))}
       </div>
