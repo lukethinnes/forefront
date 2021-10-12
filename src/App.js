@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import NavBar from './navbar'
 import Counters from './components/counters';
+import NavBar from './components/navbar'
 
-export default class App extends Component() {
+class App extends Component {
 
   state = {
     counters: [
@@ -34,19 +34,26 @@ export default class App extends Component() {
     this.setState({counters});
   };
 
+  handleDelete = counterId => {
+    const counters = this.state.counters.filter(c => c.id !== counterId)
+    this.setState({ counters })
+  }
+
   render() {
-    return (
-<>
-<NavBar totalCounters={this.state.counters.filter(c => c > 0).length} />
+  return (
+    <React.Fragment>
+      <NavBar />
       <main className="container">
         <Counters 
+          counters={this.state.counters}
           onDelete={this.handleDelete}
           onIncrement={this.handleIncrement}
           onReset={this.handleReset}
-      />
+        />
       </main>
-</>
-    );
-  }
+    </React.Fragment>
+  );
+}
 }
 
+export default App;
