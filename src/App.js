@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Counters from './components/counters';
 import NavBar from './components/navbar'
 
@@ -40,20 +40,20 @@ class App extends Component {
   }
 
   render() {
-  return (
-    <React.Fragment>
-      <NavBar />
-      <main className="container">
-        <Counters 
-          counters={this.state.counters}
-          onDelete={this.handleDelete}
-          onIncrement={this.handleIncrement}
-          onReset={this.handleReset}
-        />
-      </main>
-    </React.Fragment>
-  );
-}
+    return (
+      <React.Fragment>
+        <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length} />
+        <main className="container">
+          <Counters 
+            counters={this.state.counters}
+            onDelete={this.handleDelete}
+            onIncrement={this.handleIncrement}
+            onReset={this.handleReset}
+          />
+        </main>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;

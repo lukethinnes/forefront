@@ -22,12 +22,12 @@ export default class Counter extends Component {
 
   getBadgeClasses() {
     let classes = 'badge m-2 bg-';
-    classes += this.props.counter.value === 0 ? 'warning' : 'primary';
+    classes += this.props.counters.value === 0 ? 'warning' : 'primary';
     return classes;
   }
 
   formatCount() {
-    const {value} = this.props.counter;
+    const {value} = this.props.counters;
     return value === 0 ? 'Zero' : value;
   }
 }
